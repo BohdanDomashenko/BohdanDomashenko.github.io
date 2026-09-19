@@ -1,0 +1,15 @@
+---
+interface Props { title: string; lede?: string }
+const { title, lede } = Astro.props;
+---
+<div class="intro">
+  <h1>{title}</h1>
+  {lede && <p>{lede}</p>}
+</div>
+
+<style>
+  .intro { display: flex; flex-direction: column; gap: 14px; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em; white-space: pre-line; }
+  p { font-size: 15px; line-height: 1.75; color: var(--muted); max-width: 540px; }
+  @media (max-width: 640px) { h1 { font-size: 30px; line-height: 1.18; } p { font-size: 14px; line-height: 1.7; } }
+</style>

@@ -1,0 +1,20 @@
+---
+import PostMeta from './PostMeta.astro';
+import { readTime } from '../lib/format';
+import type { Post } from '../lib/posts';
+
+interface Props { post: Post }
+const { post } = Astro.props;
+---
+<article>
+  <PostMeta date={post.data.date} read={readTime(post.body ?? '')} />
+  <h2><a href={`/posts/${post.id}/`}>{post.data.title}</a></h2>
+  <p>{post.data.excerpt}</p>
+</article>
+
+<style>
+  article { display: flex; flex-direction: column; gap: 11px; padding: 30px 0; border-top: 1px solid var(--rule); }
+  h2 { font-family: var(--serif); font-weight: 400; font-size: 30px; line-height: 1.25; }
+  p { font-size: 15px; line-height: 1.75; color: var(--muted); }
+  @media (max-width: 640px) { article { padding: 22px 0; gap: 8px; } h2 { font-size: 23px; line-height: 1.28; } p { font-size: 14px; line-height: 1.7; } }
+</style>

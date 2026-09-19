@@ -1,0 +1,22 @@
+---
+interface Props { heading: string; facts: { label: string; value: string }[] }
+const { heading, facts } = Astro.props;
+---
+<section>
+  <h2>{heading}</h2>
+  {facts.map((f) => (
+    <div class="row">
+      <span class="label">{f.label}</span>
+      <span class="value">{f.value}</span>
+    </div>
+  ))}
+</section>
+
+<style>
+  section { display: flex; flex-direction: column; gap: 4px; }
+  h2 { margin: 0 0 10px; font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+  .row { display: flex; gap: 20px; align-items: baseline; padding: 13px 0; border-top: 1px solid var(--rule); }
+  .label { width: 104px; flex-shrink: 0; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); }
+  .value { font-size: 16px; line-height: 1.6; color: var(--body); }
+  @media (max-width: 640px) { .row { flex-direction: column; gap: 4px; } }
+</style>

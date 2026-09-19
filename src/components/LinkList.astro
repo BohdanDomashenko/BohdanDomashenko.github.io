@@ -1,0 +1,28 @@
+---
+interface Item { title: string; source: string; url: string; note: string }
+interface Props { heading: string; items: Item[] }
+const { heading, items } = Astro.props;
+---
+<section>
+  <h2>{heading}</h2>
+  {items.map((item) => (
+    <a href={item.url} rel="noopener noreferrer" target="_blank">
+      <span class="text">
+        <span class="title">{item.title}</span>
+        <span class="note">{item.note}</span>
+      </span>
+      <span class="source">{item.source}</span>
+    </a>
+  ))}
+</section>
+
+<style>
+  section { display: flex; flex-direction: column; gap: 4px; }
+  h2 { margin: 0 0 6px; font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+  a { display: flex; gap: 24px; align-items: baseline; padding: 18px 0; border-top: 1px solid var(--rule); }
+  .text { display: flex; flex-direction: column; gap: 7px; flex-grow: 1; }
+  .title { font-size: 17px; line-height: 1.35; }
+  .note { font-size: 14px; line-height: 1.6; color: var(--muted); }
+  .source { font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--dim); white-space: nowrap; }
+  @media (max-width: 640px) { a { flex-direction: column; gap: 8px; } .source { order: -1; } }
+</style>

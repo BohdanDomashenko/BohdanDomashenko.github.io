@@ -1,0 +1,31 @@
+---
+import type { Post } from '../lib/posts';
+
+interface Props { newer?: Post; older?: Post }
+const { newer, older } = Astro.props;
+---
+{(newer || older) && (
+  <nav aria-label="More posts">
+    {newer && (
+      <a class="newer" href={`/posts/${newer.id}/`}>
+        <span class="label">← Newer</span>
+        <span class="title">{newer.data.title}</span>
+      </a>
+    )}
+    {older && (
+      <a class="older" href={`/posts/${older.id}/`}>
+        <span class="label">Older →</span>
+        <span class="title">{older.data.title}</span>
+      </a>
+    )}
+  </nav>
+)}
+
+<style>
+  nav { display: flex; justify-content: space-between; gap: 24px; border-top: 1px solid var(--rule); padding-top: 26px; }
+  a { display: flex; flex-direction: column; gap: 6px; max-width: 280px; }
+  .older { margin-left: auto; text-align: right; }
+  .label { font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--dim); }
+  .title { font-family: var(--serif); font-size: 19px; line-height: 1.35; }
+  @media (max-width: 640px) { nav { flex-direction: column; } .older { margin-left: 0; text-align: left; } a { max-width: none; } }
+</style>

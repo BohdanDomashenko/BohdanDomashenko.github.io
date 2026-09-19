@@ -1,0 +1,36 @@
+- id: choose-boring-technology
+  section: essays
+  title: Choose Boring Technology
+  source: Dan McKinley
+  url: https://mcfunley.com/choose-boring-technology
+  note: The innovation-tokens idea. I have quoted this in more design reviews than anything else on this page.
+- id: worse-is-better
+  section: essays
+  title: The Rise of Worse is Better
+  source: Richard Gabriel
+  url: https://www.dreamsongs.com/RiseOfWorseIsBetter.html
+  note: Forty years old and still the sharpest thing written about why the simpler, uglier design usually wins.
+- id: ten-years
+  section: essays
+  title: Teach Yourself Programming in Ten Years
+  source: Peter Norvig
+  url: https://norvig.com/21-days.html
+  note: A calm antidote to every twenty-one-day tutorial. Worth a re-read whenever you feel behind.
+- id: website-obesity
+  section: essays
+  title: The Website Obesity Crisis
+  source: Maciej Cegłowski
+  url: https://idlewords.com/talks/website_obesity.htm
+  note: Funny, mean, and correct about page weight. It changed how I build front ends more than any framework has.
+- id: simple-made-easy
+  section: talks
+  title: Simple Made Easy
+  source: Rich Hickey
+  url: https://www.infoq.com/presentations/Simple-Made-Easy/
+  note: The distinction between simple and easy, made so plainly that you cannot un-hear it afterwards.
+- id: mother-of-all-demos
+  section: talks
+  title: The Mother of All Demos
+  source: Douglas Engelbart
+  url: https://www.youtube.com/watch?v=yJDv-zdhzMY
+  note: 1968. Worth watching once a year to see how much of the future was already sitting on one desk.

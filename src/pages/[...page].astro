@@ -1,0 +1,29 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import PostListItem from '../components/PostListItem.astro';
+import Pagination from '../components/Pagination.astro';
+import { getPosts, PAGE_SIZE, type Post } from '../lib/posts';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  return paginate(await getPosts(), { pageSize: PAGE_SIZE });
+}) satisfies GetStaticPaths;
+
+interface Props { page: Page<Post> }
+const { page } = Astro.props;
+---
+<BaseLayout current="writing" title={page.currentPage > 1 ? `Page ${page.currentPage}` : undefined}>
+  {page.currentPage === 1 ? (
+    <PageIntro
+      title={'Thoughts and notes on\nwhatever I find important.'}
+      lede="Mostly engineering and AI — how systems are actually built, what the new tools change and what they only pretend to, and the ideas I want to keep."
+    />
+  ) : (
+    <PageIntro title={`Writing — page ${page.currentPage}`} />
+  )}
+  <div>
+    {page.data.map((post) => <PostListItem post={post} />)}
+  </div>
+  <Pagination current={page.currentPage} last={page.lastPage} />
+</BaseLayout>
