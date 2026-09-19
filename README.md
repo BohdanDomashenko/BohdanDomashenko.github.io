@@ -21,4 +21,4 @@ Add `src/content/posts/<slug>.md`:
 Push to `main`; GitHub Actions publishes to Pages. One-time: repo Settings → Pages → Source: GitHub Actions. The repo must be named `BohdanDomashenko.github.io`.
 
 ## Placeholders
-GitHub/LinkedIn/Upwork URLs in `src/consts.ts`; replace `public/avatar.svg` and update `AVATAR` in `src/consts.ts`.
+GitHub/LinkedIn/Upwork URLs in `src/consts.ts` are still `#` — fill them in.

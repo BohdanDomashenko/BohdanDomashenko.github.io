@@ -21,5 +21,5 @@ export const LINKS = {
   rss: { label: 'RSS', href: '/rss.xml' },
 };
 
-/** Swap this path when you drop in a real photo (e.g. '/avatar.jpg'). */
-export const AVATAR = '/avatar.svg';
+/** Profile photo shown on the About page (file lives in public/). */
+export const AVATAR = '/avatar.jpg';
