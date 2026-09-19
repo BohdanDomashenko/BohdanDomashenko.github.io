@@ -1,0 +1,17 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageIntro from '../components/PageIntro.astro';
+import LinkList from '../components/LinkList.astro';
+
+const items = (await getCollection('reading')).map((e) => e.data);
+const by = (section: 'essays' | 'talks') => items.filter((i) => i.section === section);
+---
+<BaseLayout title="Interesting" current="interesting">
+  <PageIntro
+    title="Interesting"
+    lede="Things I keep coming back to — essays, talks and a few tools. Not a link dump: something only lands here after I have re-read it at least once."
+  />
+  <LinkList heading="Essays" items={by('essays')} />
+  <LinkList heading="Talks" items={by('talks')} />
+</BaseLayout>
