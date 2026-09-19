@@ -1,0 +1,17 @@
+---
+import { formatDate } from '../lib/format';
+
+interface Props { date: Date; read: string }
+const { date, read } = Astro.props;
+---
+<div class="meta">
+  <time datetime={date.toISOString()}>{formatDate(date)}</time>
+  <span class="sep" aria-hidden="true">/</span>
+  <span>{read}</span>
+</div>
+
+<style>
+  .meta { display: flex; gap: 10px; font-size: 12px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--dim); }
+  .sep { color: #4f545d; }
+  @media (max-width: 640px) { .meta { font-size: 11px; gap: 9px; } }
+</style>

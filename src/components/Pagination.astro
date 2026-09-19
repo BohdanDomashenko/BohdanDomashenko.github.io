@@ -1,0 +1,24 @@
+---
+interface Props { current: number; last: number }
+const { current, last } = Astro.props;
+const url = (n: number) => (n === 1 ? '/' : `/${n}/`);
+const pages = Array.from({ length: last }, (_, i) => i + 1);
+---
+{last > 1 && (
+  <nav aria-label="Pagination">
+    {current > 1 ? <a href={url(current - 1)}>← Newer</a> : <span class="off">← Newer</span>}
+    <div class="pages">
+      {pages.map((n) => <a href={url(n)} aria-current={n === current ? 'page' : undefined}>{n}</a>)}
+    </div>
+    {current < last ? <a href={url(current + 1)}>Older →</a> : <span class="off">Older →</span>}
+  </nav>
+)}
+
+<style>
+  nav { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--rule); padding-top: 22px; font-size: 14px; }
+  .off { color: var(--faint); }
+  .pages { display: flex; gap: 6px; }
+  .pages a { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 10px; border: 1px solid transparent; color: var(--muted); }
+  .pages a[aria-current='page'] { background: var(--surface-2); border-color: var(--accent); color: var(--text); }
+  @media (max-width: 640px) { .pages { gap: 4px; } nav { padding-top: 16px; } }
+</style>
