@@ -1,0 +1,20 @@
+---
+import { SITE, LINKS } from '../consts';
+
+interface Props { back?: { href: string; label: string } }
+const { back } = Astro.props;
+const links = [LINKS.rss, LINKS.github, LINKS.email];
+---
+<footer>
+  {back ? <a class="dim" href={back.href}>{back.label}</a> : <span>© {new Date().getFullYear()} {SITE.name}</span>}
+  <div class="links">
+    {links.map((l) => <a href={l.href}>{l.label}</a>)}
+  </div>
+</footer>
+
+<style>
+  footer { display: flex; justify-content: space-between; align-items: center; padding-bottom: 44px; font-size: 13px; color: var(--dim); }
+  .dim, .links a { color: var(--dim); }
+  .dim:hover, .links a:hover { color: var(--accent); }
+  .links { display: flex; gap: 22px; }
+</style>
