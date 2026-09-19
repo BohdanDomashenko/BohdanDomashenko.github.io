@@ -17,7 +17,7 @@ The survivors have almost nothing in common with what I would call good software
 
 > A tool you can read in a minute is a tool you can still trust in a year.
 
-Here is one of the oldest ones. It trims a video to the first thirty seconds so I can send it to someone without thinking about it. Four lines, written in 2019, never touched since:
+Here is one of the oldest ones. It trims a video to the first thirty seconds so I can send it to someone without thinking about it. A few lines, written in 2019, never touched since:
 
 ```bash
 #!/usr/bin/env bash

@@ -13,12 +13,14 @@ export const getStaticPaths = (async ({ paginate }) => {
 interface Props { page: Page<Post> }
 const { page } = Astro.props;
 ---
-<BaseLayout current="writing">
-  {page.currentPage === 1 && (
+<BaseLayout current="writing" title={page.currentPage > 1 ? `Page ${page.currentPage}` : undefined}>
+  {page.currentPage === 1 ? (
     <PageIntro
       title={'Thoughts and notes on\nwhatever I find important.'}
       lede="Mostly engineering and AI — how systems are actually built, what the new tools change and what they only pretend to, and the ideas I want to keep."
     />
+  ) : (
+    <PageIntro title={`Writing — page ${page.currentPage}`} />
   )}
   <div>
     {page.data.map((post) => <PostListItem post={post} />)}

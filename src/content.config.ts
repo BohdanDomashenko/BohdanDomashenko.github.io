@@ -18,7 +18,7 @@ const reading = defineCollection({
     section: z.enum(['essays', 'talks']),
     title: z.string(),
     source: z.string(),
-    url: z.string().url(),
+    url: z.url(),
     note: z.string(),
   }),
 });

@@ -25,3 +25,4 @@
   .prose blockquote { font-size: 21px; padding-left: 18px; }
   .prose pre { padding: 16px; font-size: 13px; }
 }
+.prose pre:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }

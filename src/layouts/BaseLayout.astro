@@ -15,8 +15,9 @@ interface Props {
   narrow?: boolean;
   current?: NavKey;
   back?: { href: string; label: string };
+  noindex?: boolean;
 }
-const { title, description = SITE.description, narrow = false, current, back } = Astro.props;
+const { title, description = SITE.description, narrow = false, current, back, noindex = false } = Astro.props;
 const fullTitle = title ? `${title} — ${SITE.name}` : SITE.name;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -27,7 +28,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    {noindex ? <meta name="robots" content="noindex" /> : <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate" type="application/rss+xml" title={SITE.name} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />
