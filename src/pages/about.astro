@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Pill from '../components/Pill.astro';
+import FactList from '../components/FactList.astro';
+import { LINKS, AVATAR, SITE } from '../consts';
+
+const facts = [
+  { label: 'Work', value: 'Engineer at Geniusee' },
+  { label: 'Focus', value: 'Backend and system design. AI and agentic workflows.' },
+  { label: 'Studied', value: 'BSc Software Engineering, Zaporizhzhya National Technical University. Exchange in Engineering Science at KU Leuven.' },
+  { label: 'Languages', value: 'Ukrainian (native), English (B2)' },
+];
+const elsewhere = [LINKS.email, LINKS.github, LINKS.linkedin, LINKS.upwork, LINKS.rss];
+---
+<BaseLayout title="About" narrow current="about">
+  <div class="top">
+    <div class="lead">
+      <h1>About</h1>
+      <p class="lede">I am Bohdan Domashenko. I work as an engineer at Geniusee, mostly on the backend. This is where I keep my notes.</p>
+    </div>
+    <img src={AVATAR} alt={SITE.name} width="148" height="148" />
+  </div>
+
+  <div class="text">
+    <p>I have been building products for five years. Node.js and TypeScript, with Postgres, MongoDB and Redis behind them. React and Next.js when the work reaches the browser. What I like most is system design: how the data is modelled, where things get slow, what will be hard to change later.</p>
+    <p>One thing I think about a lot right now is AI and agentic loops. Models take over more of the work every month. The question I care about is what the person does then — where judgment still belongs to a human, and how you stay in the loop instead of approving whatever comes out.</p>
+    <p>The rest is plain engineering: architecture, databases, performance, the bugs that cost me a day. I keep the notes here as I work through it — what worked, what did not, what I would do differently. If the same things interest you, follow along.</p>
+  </div>
+
+  <FactList heading="At a glance" facts={facts} />
+
+  <section class="elsewhere">
+    <h2>Elsewhere</h2>
+    <div class="pills">
+      {elsewhere.map((l) => <Pill href={l.href}>{l.label}</Pill>)}
+    </div>
+  </section>
+
+  <section class="colophon">
+    <h2>Colophon</h2>
+    <p>Posts are Markdown files in a Git repository. The site is static, built with Astro and hosted on GitHub Pages. Set in Instrument Serif and IBM Plex Sans. No analytics, no cookies. If you want to say something, use the email link above.</p>
+  </section>
+</BaseLayout>
+
+<style>
+  .top { display: flex; gap: 36px; align-items: flex-start; }
+  .lead { display: flex; flex-direction: column; gap: 14px; flex-grow: 1; }
+  h1 { font-family: var(--serif); font-weight: 400; font-size: 44px; line-height: 1.15; letter-spacing: -0.01em; }
+  .lede { font-family: var(--serif); font-size: 23px; line-height: 1.5; color: var(--body); }
+  img { flex-shrink: 0; border-radius: 18px; object-fit: cover; border: 1px solid var(--border); }
+  .text { display: flex; flex-direction: column; gap: 20px; }
+  .text p { font-size: 17px; line-height: 1.8; color: var(--body); }
+  h2 { margin: 0; font-size: 12px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); }
+  .elsewhere, .colophon { display: flex; flex-direction: column; gap: 16px; }
+  .pills { display: flex; gap: 10px; flex-wrap: wrap; }
+  .colophon p { font-size: 15px; line-height: 1.8; color: var(--muted); }
+  @media (max-width: 640px) {
+    .top { flex-direction: column-reverse; gap: 20px; }
+    h1 { font-size: 32px; }
+    .lede { font-size: 20px; }
+    .text p { font-size: 16px; }
+  }
+</style>
